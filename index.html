@@ -4,15 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Indústria 4.0</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #004d99;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #004d99;
+            border-bottom: 2px solid #004d99;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            cursor: pointer;
+        }
+
+        .pilares-container, .tecnologias-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .pilar, .tecnologia {
+            background-color: #e6f2ff;
+            padding: 1rem;
+            border-radius: 8px;
+            flex: 1 1 calc(50% - 1rem);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .pilar:hover {
+            transform: translateY(-5px);
+        }
+
+        .descricao {
+            display: none;
+            margin-top: 1rem;
+            font-style: italic;
+            color: #555;
+        }
+
+        .evolucao-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .era {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(25% - 2rem);
+            min-width: 250px;
+        }
+
+        .era img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        #outros-temas ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        #outros-temas li {
+            background-color: #e6f2ff;
+            padding: 0.75rem;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .pilar, .tecnologia {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Indústria 4.0</h1>
         <nav>
             <a href="#o-que-e">O que é?</a>
+            <a href="#evolucao">Evolução</a>
             <a href="#pilares">Pilares</a>
             <a href="#tecnologias">Tecnologias</a>
+            <a href="#outros-temas">Outros Temas</a>
         </nav>
     </header>
 
@@ -22,6 +147,40 @@
             <p>
                 A Indústria 4.0, também conhecida como a Quarta Revolução Industrial, refere-se à automação, interconexão e digitalização dos processos de produção e negócios. Utiliza tecnologias como a Internet das Coisas (IoT), Inteligência Artificial (IA) e Big Data para criar fábricas inteligentes, otimizando a eficiência e a flexibilidade da produção.
             </p>
+        </section>
+
+        <section id="evolucao">
+            <h2>Evolução Industrial: da 1.0 à 4.0</h2>
+            <div class="evolucao-container">
+                <div class="era">
+                    <h3>Indústria 1.0</h3>
+                    <img src="https://via.placeholder.com/300x200/DDE4F0/004D99?text=Industria+1.0" alt="Imagem da Indústria 1.0 - Máquina a vapor">
+                    <p>
+                        Marcada pela máquina a vapor e pela mecanização da produção, a partir do século XVIII.
+                    </p>
+                </div>
+                <div class="era">
+                    <h3>Indústria 2.0</h3>
+                    <img src="https://via.placeholder.com/300x200/B8C7E0/004D99?text=Industria+2.0" alt="Imagem da Indústria 2.0 - Linha de montagem">
+                    <p>
+                        Caracterizada pela produção em massa e uso da eletricidade, como as linhas de montagem de Henry Ford.
+                    </p>
+                </div>
+                <div class="era">
+                    <h3>Indústria 3.0</h3>
+                    <img src="https://via.placeholder.com/300x200/94A6D0/004D99?text=Industria+3.0" alt="Imagem da Indústria 3.0 - Automação e robótica">
+                    <p>
+                        Iniciada com a automação, robótica e o uso de computadores na produção a partir dos anos 70.
+                    </p>
+                </div>
+                <div class="era">
+                    <h3>Indústria 4.0</h3>
+                    <img src="https://via.placeholder.com/300x200/6E88C0/004D99?text=Industria+4.0" alt="Imagem da Indústria 4.0 - Fábrica inteligente">
+                    <p>
+                        Conhecida pela interconexão, digitalização e fábricas inteligentes com tecnologias avançadas.
+                    </p>
+                </div>
+            </div>
         </section>
 
         <section id="pilares">
@@ -67,13 +226,44 @@
                 </div>
             </div>
         </section>
+
+        <section id="outros-temas">
+            <h2>Outros tópicos do seu curso</h2>
+            <p>
+                Além dos conceitos básicos, um curso sobre Indústria 4.0 pode abordar temas como:
+            </p>
+            <ul>
+                <li>Cibersegurança Industrial</li>
+                <li>Big Data & Analytics Avançado</li>
+                <li>Gêmeos Digitais e Simulação</li>
+                <li>Manufatura Aditiva (Impressão 3D)</li>
+                <li>Realidade Aumentada (AR)</li>
+                <li>Níveis de Maturidade da Indústria</li>
+            </ul>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2025 Projeto sobre Indústria 4.0</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        function mostrarDescricao(pilarId) {
+            // Esconde todas as descrições
+            document.querySelectorAll('.descricao').forEach(descricao => {
+                descricao.style.display = 'none';
+            });
+
+            // Mostra a descrição do pilar clicado
+            const pilar = document.querySelector(`.pilar[onclick*="${pilarId}"]`);
+            if (pilar) {
+                const descricao = pilar.querySelector('.descricao');
+                if (descricao) {
+                    descricao.style.display = 'block';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
 
