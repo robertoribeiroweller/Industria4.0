@@ -1,269 +1,370 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Indústria 4.0</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Indústria 4.0 — Curso & Conteúdo</title>
+  <meta name="description" content="Guia compacto sobre Indústria 4.0: evolução, pilares, tecnologias e tópicos avançados com links para aprofundamento." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --primary: linear-gradient(135deg,#0066cc 0%,#00a3ff 100%);
+      --accent: #004d99;
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.65);
+      --radius: 14px;
+      --shadow: 0 6px 22px rgba(3,20,40,0.08);
+      --container: 1100px;
+    }
 
-        header {
-            background-color: #004d99;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial; background:var(--bg); color:#0f1724;}
 
-        header nav a {
-            color: white;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-weight: bold;
-        }
+    .wrap{max-width:var(--container);margin:2.2rem auto;padding:1rem}
 
-        main {
-            padding: 2rem;
-            max-width: 900px;
-            margin: auto;
-        }
+    header{position:sticky;top:0;backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));border-radius:12px;padding:0.6rem 1rem;margin-bottom:1.2rem;box-shadow:var(--shadow)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.8rem}
+    .logo{width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--primary);color:white;font-weight:700;font-size:18px}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem;align-items:center}
+    nav a{color:var(--accent);text-decoration:none;font-weight:600}
+    .cta{background:var(--accent);color:white;padding:.6rem .9rem;border-radius:10px;text-decoration:none;font-weight:700}
 
-        section {
-            margin-bottom: 2rem;
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center;background:linear-gradient(180deg,#ffffff00,#ffffff00);padding:2rem;border-radius:var(--radius);}
+    .hero-card{background:var(--card);padding:2rem;border-radius:12px;box-shadow:var(--shadow)}
+    .kicker{display:inline-block;padding:.25rem .6rem;border-radius:999px;background:#e6f6ff;color:#004d99;font-weight:700;margin-bottom:.75rem;font-size:.85rem}
+    h1{margin:0;font-size:2rem}
+    p.lead{color:var(--muted);margin-top:.6rem}
+    .hero-visual{background:linear-gradient(160deg,#f0fbff, #eaf3ff);padding:1.2rem;border-radius:12px;box-shadow:var(--shadow);text-align:center}
+    .hero-visual img{max-width:100%;border-radius:8px}
+    .grid-cta{display:flex;gap:.6rem;margin-top:1rem}
 
-        h2 {
-            color: #004d99;
-            border-bottom: 2px solid #004d99;
-            padding-bottom: 0.5rem;
-        }
-        
-        h3 {
-            cursor: pointer;
-        }
+    /* SECTIONS */
+    section{margin-top:1.25rem}
+    .section-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    .card{background:var(--card);padding:1.25rem;border-radius:12px;box-shadow:var(--shadow)}
+    h2{color:var(--accent);margin:0 0 .6rem 0}
+    .muted{color:var(--muted);font-size:.96rem}
 
-        .pilares-container, .tecnologias-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
+    /* pilares */
+    .pilares{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+    .pilar{padding:1rem;border-radius:12px;background:linear-gradient(180deg,#f8fbff,#ffffff);cursor:pointer;border:1px solid #eef6ff;transition:transform .18s ease,box-shadow .18s}
+    .pilar:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(3,20,40,0.08)}
+    .pilar h3{margin:.2rem 0}
+    .pilar p{margin:0;color:var(--muted)}
 
-        .pilar, .tecnologia {
-            background-color: #e6f2ff;
-            padding: 1rem;
-            border-radius: 8px;
-            flex: 1 1 calc(50% - 1rem);
-            transition: transform 0.2s ease-in-out;
-        }
+    /* tecnologias */
+    .tecs{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    .tec{display:flex;gap:1rem;align-items:flex-start}
+    .tec svg{width:44px;height:44px;border-radius:8px;background:#eef8ff;padding:.6rem}
 
-        .pilar:hover {
-            transform: translateY(-5px);
-        }
+    /* evolucao timeline */
+    .timeline{display:flex;flex-wrap:wrap;gap:1rem}
+    .era{flex:1 1 220px;padding:1rem;border-radius:12px;background:linear-gradient(180deg,#ffffff,#fbfdff);box-shadow:var(--shadow)}
 
-        .descricao {
-            display: none;
-            margin-top: 1rem;
-            font-style: italic;
-            color: #555;
-        }
+    /* outros temas */
+    .topics{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    .topic{padding:1rem;border-radius:12px;background:#f8fbff;border:1px solid #e6f6ff}
+    .topic a{display:inline-block;margin-top:.6rem}
 
-        .evolucao-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            text-align: center;
-        }
+    footer{margin-top:2rem;padding:1rem;text-align:center;color:var(--muted)}
 
-        .era {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            flex: 1 1 calc(25% - 2rem);
-            min-width: 250px;
-        }
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .section-grid{grid-template-columns:1fr}
+      .pilares{grid-template-columns:repeat(2,1fr)}
+      .topics{grid-template-columns:1fr}
+    }
 
-        .era img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-        }
+    @media (max-width:560px){
+      nav ul{display:none}
+      .wrap{margin:1rem}
+      .hero-card{padding:1rem}
+    }
 
-        #outros-temas ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        #outros-temas li {
-            background-color: #e6f2ff;
-            padding: 0.75rem;
-            border-radius: 4px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #333;
-            color: white;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 600px) {
-            .pilar, .tecnologia {
-                flex: 1 1 100%;
-            }
-        }
-    </style>
+    /* small helpers */
+    .inline-icon{display:inline-flex;align-items:center;gap:.5rem}
+    .micro{font-size:.9rem;color:var(--muted)}
+  </style>
 </head>
 <body>
+  <div class="wrap">
     <header>
-        <h1>Indústria 4.0</h1>
-        <nav>
-            <a href="#o-que-e">O que é?</a>
-            <a href="#evolucao">Evolução</a>
-            <a href="#pilares">Pilares</a>
-            <a href="#tecnologias">Tecnologias</a>
-            <a href="#outros-temas">Outros Temas</a>
+      <div class="nav-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden>i4.0</div>
+          <div>
+            <div style="font-weight:700">Indústria 4.0</div>
+            <div class="micro">Curso & Conteúdo — guia prático</div>
+          </div>
+        </div>
+
+        <nav aria-label="Menu principal">
+          <ul>
+            <li><a href="#o-que-e">O que é?</a></li>
+            <li><a href="#pilares">Pilares</a></li>
+            <li><a href="#tecnologias">Tecnologias</a></li>
+            <li><a href="#outros-temas">Outros temas</a></li>
+          </ul>
         </nav>
+
+        <div style="display:flex;gap:.6rem;align-items:center">
+          <a class="cta" href="#pilares">Comece o curso</a>
+        </div>
+      </div>
     </header>
 
     <main>
-        <section id="o-que-e">
-            <h2>O que é a Indústria 4.0?</h2>
-            <p>
-                A Indústria 4.0, também conhecida como a Quarta Revolução Industrial, refere-se à automação, interconexão e digitalização dos processos de produção e negócios. Utiliza tecnologias como a Internet das Coisas (IoT), Inteligência Artificial (IA) e Big Data para criar fábricas inteligentes, otimizando a eficiência e a flexibilidade da produção.
-            </p>
-        </section>
+      <section class="hero">
+        <div class="hero-card">
+          <span class="kicker">Guia Rápido</span>
+          <h1>Indústria 4.0 — do conceito à prática</h1>
+          <p class="lead">Descubra a evolução industrial, os pilares essenciais, tecnologias-chave e temas avançados com leituras recomendadas para cada tópico.</p>
 
-        <section id="evolucao">
-            <h2>Evolução Industrial: da 1.0 à 4.0</h2>
-            <div class="evolucao-container">
-                <div class="era">
-                    <h3>Indústria 1.0</h3>
-                    <img src="https://static.todamateria.com.br/upload/im/ag/image5-cke.jpg" alt="Imagem da Indústria 1.0 - Máquina a vapor">
-                    <p>
-                        Marcada pela máquina a vapor e pela mecanização da produção, a partir do século XVIII.
-                    </p>
-                </div>
-                <div class="era">
-                    <h3>Indústria 2.0</h3>
-                    <img src="https://media.licdn.com/dms/image/v2/D5612AQGUQwntzP4jdw/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1689887562778?e=2147483647&v=beta&t=Mc-d8unnluF23mFIgAFUZDcjzMmBY0x8xTxI2yQBJSo" alt="Imagem da Indústria 2.0 - Linha de montagem">
-                    <p>
-                        Caracterizada pela produção em massa e uso da eletricidade, como as linhas de montagem de Henry Ford.
-                    </p>
-                </div>
-                <div class="era">
-                    <h3>Indústria 3.0</h3>
-                    <img src="https://untidigital.com.br/wp-content/uploads/2025/03/sufyan-JUJzjthZnYU-unsplash.jpg" alt="Imagem da Indústria 3.0 - Automação e robótica">
-                    <p>
-                        Iniciada com a automação, robótica e o uso de computadores na produção a partir dos anos 70.
-                    </p>
-                </div>
-                <div class="era">
-                    <h3>Indústria 4.0</h3>
-                    <img src="https://amazonasatual.com.br/wp-content/uploads/2019/09/robos_industriais-Governo-do-Esp%C3%ADrito-SantoABrDivulga%C3%A7%C3%A3o.jpg" alt="Imagem da Indústria 4.0 - Fábrica inteligente">
-                    <p>
-                        Conhecida pela interconexão, digitalização e fábricas inteligentes com tecnologias avançadas.
-                    </p>
-                </div>
+          <div class="grid-cta">
+            <a class="cta" href="#outros-temas">Ver tópicos avançados</a>
+            <a style="background:#eef6ff;color:var(--accent);padding:.6rem .9rem;border-radius:10px;text-decoration:none;font-weight:700" href="#tecnologias">Tecnologias</a>
+          </div>
+
+          <div style="margin-top:1rem;font-size:.95rem;color:var(--muted)">
+            <strong>Dica:</strong> clique nos cartões de "Pilares" para expandir a leitura. Use o botão <em>Comece o curso</em> para ir direto ao conteúdo didático.
+          </div>
+        </div>
+
+        <aside class="hero-visual" aria-hidden>
+          <img src="https://images.unsplash.com/photo-1581093588401-1b9c08b6a1d8?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcd" alt="Fábrica inteligente com robôs e painéis digitais"/>
+          <div class="micro">Imagem ilustrativa — fábrica inteligente</div>
+        </aside>
+      </section>
+
+      <section id="o-que-e" class="card" style="margin-top:1.2rem">
+        <h2>O que é a Indústria 4.0?</h2>
+        <p class="muted">A Indústria 4.0 é a integração entre sistemas ciberfísicos, Internet das Coisas, Internet de Serviços e processamento inteligente de dados — criando fábricas mais eficientes, flexíveis e conectadas.</p>
+      </section>
+
+      <section id="pilares">
+        <h2>Os pilares da Indústria 4.0</h2>
+        <div class="pilares" role="list">
+
+          <div class="pilar" role="listitem" tabindex="0" onclick="toggleExpand(this)" onkeypress="if(event.key==='Enter') toggleExpand(this)">
+            <div style="display:flex;align-items:center;gap:0.8rem">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <rect x="1" y="1" width="22" height="22" rx="5" fill="#eaf6ff"></rect>
+                <path d="M7 12h10" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round"></path>
+                <path d="M7 7h10" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round"></path>
+                <path d="M7 17h10" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+              <div>
+                <h3>Interoperabilidade</h3>
+                <p class="micro">Sistemas, máquinas e pessoas conectados trocando dados de forma integrada.</p>
+              </div>
             </div>
-        </section>
+            <div class="extra" style="display:none;margin-top:.8rem;color:var(--muted)">Permite que sensores, máquinas e software conversem entre si — base para cadeias produtivas mais ágeis e menos suscetíveis a falhas de comunicação.</div>
+          </div>
 
-        <section id="pilares">
-            <h2>Os pilares da Indústria 4.0</h2>
-            <div class="pilares-container">
-                <div class="pilar" onclick="mostrarDescricao('interoperabilidade')">
-                    <h3>Interoperabilidade</h3>
-                    <p class="descricao">A capacidade de comunicação entre sistemas ciberfísicos, humanos e máquinas de forma integrada.</p>
-                </div>
-                <div class="pilar" onclick="mostrarDescricao('virtualizacao')">
-                    <h3>Virtualização</h3>
-                    <p class="descricao">A criação de cópias virtuais de processos e sistemas físicos para monitoramento remoto.</p>
-                </div>
-                <div class="pilar" onclick="mostrarDescricao('tempo-real')">
-                    <h3>Tempo Real</h3>
-                    <p class="descricao">A capacidade de coletar e analisar dados em tempo real para tomar decisões rápidas e precisas.</p>
-                </div>
-                <div class="pilar" onclick="mostrarDescricao('descentralizacao')">
-                    <h3>Descentralização</h3>
-                    <p class="descricao">A habilidade dos sistemas ciberfísicos de tomar decisões de forma autônoma.</p>
-                </div>
+          <div class="pilar" role="listitem" tabindex="0" onclick="toggleExpand(this)" onkeypress="if(event.key==='Enter') toggleExpand(this)">
+            <div style="display:flex;align-items:center;gap:0.8rem">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <rect x="1" y="1" width="22" height="22" rx="5" fill="#fff7e6"></rect>
+                <path d="M7 12h10" stroke="#ff8a00" stroke-width="1.5" stroke-linecap="round"></path>
+                <path d="M12 7v10" stroke="#ff8a00" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+              <div>
+                <h3>Virtualização</h3>
+                <p class="micro">Gêmeos digitais e dashboards que espelham a fábrica real.</p>
+              </div>
             </div>
-        </section>
+            <div class="extra" style="display:none;margin-top:.8rem;color:var(--muted)">Simular processos, prever comportamentos e acompanhar equipamentos em tempo real reduz custos com testes e aumenta a assertividade nas decisões.</div>
+          </div>
 
-        <section id="tecnologias">
-            <h2>Tecnologias-chave</h2>
-            <div class="tecnologias-container">
-                <div class="tecnologia">
-                    <h4>Internet das Coisas (IoT)</h4>
-                    <p>Conecta dispositivos físicos à rede, permitindo a coleta e troca de dados.</p>
-                </div>
-                <div class="tecnologia">
-                    <h4>Big Data & Analytics</h4>
-                    <p>Análise de grandes volumes de dados para otimizar processos e prever falhas.</p>
-                </div>
-                <div class="tecnologia">
-                    <h4>Computação em Nuvem</h4>
-                    <p>Permite o armazenamento e processamento de dados de forma escalável e segura.</p>
-                </div>
-                <div class="tecnologia">
-                    <h4>Inteligência Artificial (IA)</h4>
-                    <p>Utilizada para automação, análise preditiva e otimização da produção.</p>
-                </div>
+          <div class="pilar" role="listitem" tabindex="0" onclick="toggleExpand(this)" onkeypress="if(event.key==='Enter') toggleExpand(this)">
+            <div style="display:flex;align-items:center;gap:0.8rem">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <rect x="1" y="1" width="22" height="22" rx="5" fill="#f0ffe8"></rect>
+                <path d="M7 12h10" stroke="#28a745" stroke-width="1.5" stroke-linecap="round"></path>
+                <path d="M9 9v6" stroke="#28a745" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+              <div>
+                <h3>Tempo Real</h3>
+                <p class="micro">Coleta e processamento de dados instantâneos para decisões imediatas.</p>
+              </div>
             </div>
-        </section>
+            <div class="extra" style="display:none;margin-top:.8rem;color:var(--muted)">Monitoramento contínuo permite detectar desvios, programar manutenção preditiva e otimizar fluxos enquanto a produção acontece.</div>
+          </div>
 
-        <section id="outros-temas">
-            <h2>Outros tópicos do seu curso</h2>
-            <p>
-                Além dos conceitos básicos, um curso sobre Indústria 4.0 pode abordar temas como:
-            </p>
-            <ul>
-                <li>Cibersegurança Industrial</li>
-                <li>Big Data & Analytics Avançado</li>
-                <li>Gêmeos Digitais e Simulação</li>
-                <li>Manufatura Aditiva (Impressão 3D)</li>
-                <li>Realidade Aumentada (AR)</li>
-                <li>Níveis de Maturidade da Indústria</li>
-            </ul>
-        </section>
+          <div class="pilar" role="listitem" tabindex="0" onclick="toggleExpand(this)" onkeypress="if(event.key==='Enter') toggleExpand(this)">
+            <div style="display:flex;align-items:center;gap:0.8rem">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <rect x="1" y="1" width="22" height="22" rx="5" fill="#fff0f6"></rect>
+                <path d="M12 7v10" stroke="#d6336c" stroke-width="1.5" stroke-linecap="round"></path>
+                <path d="M8 11h8" stroke="#d6336c" stroke-width="1.5" stroke-linecap="round"></path>
+              </svg>
+              <div>
+                <h3>Descentralização</h3>
+                <p class="micro">Sistemas autônomos que decidem localmente sem controle único.</p>
+              </div>
+            </div>
+            <div class="extra" style="display:none;margin-top:.8rem;color:var(--muted)">Equipamentos inteligentes podem reagir a condições locais, reduzindo latência e aumentando resiliência operacional.</div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="tecnologias" style="margin-top:1rem">
+        <h2>Tecnologias-chave</h2>
+        <div class="tecs">
+          <div class="card tec">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+              <rect x="0" y="0" width="24" height="24" rx="4" fill="#eef8ff"></rect>
+              <path d="M8 12h8M8 8h8M8 16h8" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+            <div>
+              <strong>Internet das Coisas (IoT)</strong>
+              <div class="micro">Sensores e atuadores conectados gerando dados operacionais em larga escala.</div>
+            </div>
+          </div>
+
+          <div class="card tec">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+              <rect x="0" y="0" width="24" height="24" rx="4" fill="#fff7e6"></rect>
+              <path d="M7 12h10" stroke="#ff8a00" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+            <div>
+              <strong>Big Data &amp; Analytics</strong>
+              <div class="micro">Tecnologias para ingestão, processamento e análise que geram insights e previsões.</div>
+            </div>
+          </div>
+
+          <div class="card tec">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+              <rect x="0" y="0" width="24" height="24" rx="4" fill="#f0ffe8"></rect>
+              <path d="M6 8h12v8H6z" stroke="#28a745" stroke-width="1.5" fill="none"></path>
+            </svg>
+            <div>
+              <strong>Computação em Nuvem</strong>
+              <div class="micro">Escalabilidade para armazenamento e processamento com segurança e disponibilidade.</div>
+            </div>
+          </div>
+
+          <div class="card tec">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+              <rect x="0" y="0" width="24" height="24" rx="4" fill="#fff0f6"></rect>
+              <path d="M8 12h8" stroke="#d6336c" stroke-width="1.5" stroke-linecap="round"></path>
+            </svg>
+            <div>
+              <strong>Inteligência Artificial (IA)</strong>
+              <div class="micro">Modelos e algoritmos para automação, classificação e previsão.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="evolucao" style="margin-top:1rem">
+        <h2>Evolução Industrial</h2>
+        <div class="timeline">
+          <div class="era card">
+            <h3>Indústria 1.0</h3>
+            <p class="micro">Mecanização com máquina a vapor (séculos XVIII–XIX).</p>
+          </div>
+          <div class="era card">
+            <h3>Indústria 2.0</h3>
+            <p class="micro">Produção em massa e eletrificação (final do século XIX — século XX).</p>
+          </div>
+          <div class="era card">
+            <h3>Indústria 3.0</h3>
+            <p class="micro">Automação e computação industrial (a partir dos anos 1970).</p>
+          </div>
+          <div class="era card">
+            <h3>Indústria 4.0</h3>
+            <p class="micro">Sistemas ciberfísicos, IoT, IA e integração digital (século XXI).</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="outros-temas" style="margin-top:1rem">
+        <h2>Outros tópicos do seu curso</h2>
+        <p class="muted">Aprofunde cada tema com textos e guias selecionados, ideais para leituras e referências nas aulas.</p>
+
+        <div class="topics">
+          <div class="topic">
+            <div class="inline-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#fffef6"/><path d="M7 12h10" stroke="#b45309" stroke-width="1.4" stroke-linecap="round"/></svg><strong>Cibersegurança Industrial</strong></div>
+            <p class="micro" style="margin-top:.5rem">Proteção de redes e equipamentos industriais contra invasões, com práticas de defesa e resposta.</p>
+            <a href="https://www.kaspersky.com.br/resource-center/definitions/o-que-e-seguranca-industrial" target="_blank" rel="noopener noreferrer">Leitura recomendada — Kaspersky (PT-BR)</a>
+          </div>
+
+          <div class="topic">
+            <div class="inline-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" fill="#f0fbff"/><path d="M7 12h10" stroke="#0066cc" stroke-width="1.4" stroke-linecap="round"/></svg><strong>Big Data &amp; Analytics Avançado</strong></div>
+            <p class="micro" style="margin-top:.5rem">Ferramentas e pipelines de dados para extração de valor a partir de grandes volumes.</p>
+            <a href="https://www.oracle.com/br/big-data/what-is-big-data/" target="_blank" rel="noopener noreferrer">Introdução — Oracle (PT-BR)</a>
+          </div>
+
+          <div class="topic">
+            <div class="inline-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" fill="#eef8ff"/><path d="M12 7v10" stroke="#0066cc" stroke-width="1.4" stroke-linecap="round"/></svg><strong>Gêmeos Digitais e Simulação</strong></div>
+            <p class="micro" style="margin-top:.5rem">Modelagem virtual de ativos físicos para testes, otimização e previsões.</p>
+            <a href="https://www.ibm.com/topics/what-is-a-digital-twin" target="_blank" rel="noopener noreferrer">Guia prático — IBM (EN)</a>
+          </div>
+
+          <div class="topic">
+            <div class="inline-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" fill="#fff7e6"/><path d="M8 12h8" stroke="#ff8a00" stroke-width="1.4" stroke-linecap="round"/></svg><strong>Manufatura Aditiva (Impressão 3D)</strong></div>
+            <p class="micro" style="margin-top:.5rem">Processos de fabricação camada-a-camada para prototipagem e produção personalizada.</p>
+            <a href="https://www.autodesk.com/solutions/additive-manufacturing/overview" target="_blank" rel="noopener noreferrer">Overview — Autodesk (EN)</a>
+          </div>
+
+          <div class="topic">
+            <div class="inline-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" fill="#fff0f6"/><path d="M7 12h10" stroke="#d6336c" stroke-width="1.4" stroke-linecap="round"/></svg><strong>Realidade Aumentada (AR)</strong></div>
+            <p class="micro" style="margin-top:.5rem">Aplicações de AR para manutenção assistida, treinamento e inspeção de qualidade.</p>
+            <a href="https://www.ptc.com/pt/technologies/augmented-reality" target="_blank" rel="noopener noreferrer">Aplicações de AR — PTC (PT-BR)</a>
+          </div>
+
+          <div class="topic">
+            <div class="inline-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" fill="#f0fff4"/><path d="M7 12h10" stroke="#16a34a" stroke-width="1.4" stroke-linecap="round"/></svg><strong>Níveis de Maturidade da Indústria</strong></div>
+            <p class="micro" style="margin-top:.5rem">Modelos de avaliação que permitem medir a evolução digital de uma planta ou empresa.</p>
+            <a href="https://www.industriadigital.gov.pt/maturidade-industria-40/" target="_blank" rel="noopener noreferrer">Modelo de maturidade — Indústria Digital (PT)</a>
+          </div>
+
+        </div>
+
+      </section>
+
+      <footer>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+          <div class="micro">&copy; 2025 — Indústria 4.0 • Projeto Educacional</div>
+          <div class="micro">Feito com ♥ — quer converter para React/Tailwind ou baixar o HTML pronto?</div>
+        </div>
+      </footer>
     </main>
+  </div>
 
-    <footer>
-        <p>&copy; 2025 Projeto sobre Indústria 4.0</p>
-    </footer>
+  <script>
+    // Toggle expand for pilares
+    function toggleExpand(el){
+      const extra = el.querySelector('.extra');
+      if(!extra) return;
+      const isHidden = extra.style.display === 'none' || extra.style.display === '';
+      document.querySelectorAll('.pilar .extra').forEach(x=>x.style.display='none');
+      if(isHidden) extra.style.display = 'block';
+      else extra.style.display = 'none';
+    }
 
-    <script>
-        function mostrarDescricao(pilarId) {
-            // Esconde todas as descrições
-            document.querySelectorAll('.descricao').forEach(descricao => {
-                descricao.style.display = 'none';
-            });
-
-            // Mostra a descrição do pilar clicado
-            const pilar = document.querySelector(`.pilar[onclick*="${pilarId}"]`);
-            if (pilar) {
-                const descricao = pilar.querySelector('.descricao');
-                if (descricao) {
-                    descricao.style.display = 'block';
-                }
-            }
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
         }
-    </script>
+      });
+    });
+
+    // Keyboard accessibility: close extras on Escape
+    document.addEventListener('keydown', e=>{ if(e.key === 'Escape') document.querySelectorAll('.pilar .extra').forEach(x=>x.style.display='none'); });
+  </script>
 </body>
 </html>
 
